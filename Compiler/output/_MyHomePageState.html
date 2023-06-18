@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	 <head>
+<script src="./dataGlobal.js"></script>
+<script src="./stateGlobal.js"></script>		<script src="./global.js"></script>
+ 		<script> function changeProduct(product){
+currentProduct.image_url = product.image_url;
+if (localStorage.getItem("mapState") != null) {
+            let arr=getState("currentProduct.image_url");
+            arr.forEach(element => {
+element.includes("image_")
+              ? (document.getElementById(element).src =  product.image_url)
+              : (document.getElementById(element).innerHTML = product.image_url);
+            });
+		}currentProduct.name = product.name;
+if (localStorage.getItem("mapState") != null) {
+            let arr=getState("currentProduct.name");
+            arr.forEach(element => {
+element.includes("image_")
+              ? (document.getElementById(element).src =  product.name)
+              : (document.getElementById(element).innerHTML = product.name);
+            });
+		};
+}
+
+let product1 = new Product();
+
+let product2 = new Product();
+
+let product3 = new Product();
+
+let product4 = new Product();
+
+let currentProduct = new Product();
+
+product1.image_url="images/img1.png";
+product1.name="prpduct1";
+product1.avaliable=false;
+product1.price=6000.0;
+product1.quantity=20;
+product2.name="prpduct2";
+product2.image_url="images/img2.png";
+product3.name="prpduct3";
+product3.image_url="images/img3.png";
+product4.name="prpduct4";
+product4.image_url="images/img7.jpg";
+currentProduct.image_url = product1.image_url;
+currentProduct.name = product1.name;
+currentProduct.quantity = product1.quantity;
+currentProduct.price = product1.price;
+currentProduct.avaliable = product1.avaliable;
+
+
+window.onload = () => {let image_id_4 = document.getElementById("image_id_4");
+image_id_4.src = currentProduct.image_url;
+setState("currentProduct.image_url" ,"image_id_4");document.getElementById("id_5").innerHTML=currentProduct.name
+setState('currentProduct.name' , 'id_5')
+let image_id_8 = document.getElementById("image_id_8");
+image_id_8.src = product1.image_url;
+setState("product1.image_url" ,"image_id_8");document.getElementById("id_10").innerHTML=product1.name
+setState('product1.name' , 'id_10')
+let image_id_12 = document.getElementById("image_id_12");
+image_id_12.src = product2.image_url;
+setState("product2.image_url" ,"image_id_12");document.getElementById("id_14").innerHTML=product2.name
+setState('product2.name' , 'id_14')
+let image_id_16 = document.getElementById("image_id_16");
+image_id_16.src = product3.image_url;
+setState("product3.image_url" ,"image_id_16");document.getElementById("id_18").innerHTML=product3.name
+setState('product3.name' , 'id_18')
+let image_id_20 = document.getElementById("image_id_20");
+image_id_20.src = product4.image_url;
+setState("product4.image_url" ,"image_id_20");document.getElementById("id_22").innerHTML=product4.name
+setState('product4.name' , 'id_22')
+}</script>
+ 	 </head>
+		<body>
+		<center>
+<div id="id_1" ><div  style=" width:200px;height:200px;" id="id_2" ><div id="id_3" ><img id="image_id_4"  src="" style="width:100px; height:100px;" />
+<p id="id_5" ></p>
+</div>
+</div>
+<div id="id_6" ><div id="id_7" ><img id="image_id_8"  src="" style="width:100px; height:100px;" />
+<button id=" id_9" onclick=" changeProduct(product1);
+"style="margin:8px; display: block;"><p id="id_10" ></p>
+</button></div>
+<div id="id_11" ><img id="image_id_12"  src="" style="width:100px; height:100px;" />
+<button id=" id_13" onclick=" changeProduct(product2);
+"style="margin:8px; display: block;"><p id="id_14" ></p>
+</button></div>
+<div id="id_15" ><img id="image_id_16"  src="" style="width:100px; height:100px;" />
+<button id=" id_17" onclick=" changeProduct(product3);
+"style="margin:8px; display: block;"><p id="id_18" ></p>
+</button></div>
+<div id="id_19" ><img id="image_id_20"  src="" style="width:100px; height:100px;" />
+<button id=" id_21" onclick=" changeProduct(product4);
+"style="margin:8px; display: block;"><p id="id_22" ></p>
+</button></div>
+</div>
+</div>
+
+		</center>
+		</body>
+</html>

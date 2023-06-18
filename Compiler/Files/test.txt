@@ -1,0 +1,93 @@
+void main() {
+int i=0;
+  runApp(MyApp());
+}
+class Product{
+    int id;
+    void setID(){
+        int pp=0;
+        pp++;
+    }
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() {
+    return _MyHomePageState();
+  }
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int counter = 0;
+  String title = "";
+  void _incrementCounter() {
+    setState(() {
+      counter++;
+    });
+  }
+  void changeInput(String val){
+        title=val;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(children: [
+        Text('This First Screen'),
+        Text('${counter}'),
+        TextButton(
+            child: Text("press"),
+            onPressed: () {
+              _incrementCounter();
+
+            }),
+        TextButton(
+            child: Text("Navigate"),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return SecondSecreen(counter: counter, title: title);
+              }));
+            }),
+        TextField(
+          onChanged: (String value) {
+              title=value;
+        })
+      ]),
+    );
+  }
+}
+
+
+class SecondSecreen extends StatelessWidget {
+  SecondSecreen({required int counter, required String title}) {
+    this.counter = counter;
+    this.title = title;
+  }
+  int counter = 0;
+  String title = "";
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(children: [
+        Text("This Second Screen"),
+        Text("${counter}"),
+        Text("${title}"),
+        TextButton(
+            child: Text('back'),
+            onPressed: () {
+              Navigator.pop(context);
+            })
+      ]),
+    );
+  }
+}

@@ -1,0 +1,103 @@
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() {
+    return _MyHomePageState();
+  }
+}
+
+
+class _MyHomePageState extends State<MyHomePage> {
+  int counter = 0;
+  String firstName = "";
+  String phone = "";
+  void _incrementCounter() {
+    setState(() {
+      counter++;
+    });
+  }
+  void _decrementCounter() {
+    setState(() {
+      counter--;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(children: [
+        Text('This First Screen'),
+        Text('${counter}'),
+        TextButton(
+            child: Text('Plus'),
+            onPressed: () {
+              _incrementCounter();
+            }),
+        TextButton(
+            child: Text('Minus'),
+            onPressed: () {
+              _decrementCounter();
+            }),
+        Text("your Name"),
+        TextField(onChanged: (String value) {
+          firstName = value;
+        }),
+        Text("your phone Number"),
+        TextField(onChanged: (String value) {
+          phone = value;
+        }),
+        TextButton(
+              child: Text('Navigate'),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return SecondSecreen(counter: this.counter, title: title);
+                }));
+              })
+     ]),
+    );
+  }
+}
+
+class SecondSecreen extends StatelessWidget {
+  SecondSecreen(
+      {required int counter,
+      required String firstName,
+      required String phone}) {
+    this.counter = counter;
+    this.firstName = firstName;
+    this.phone = phone;
+  }
+  int counter = 0;
+  String firstName = "";
+  String phone = "";
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(children: [
+        Text("This Second Screen"),
+        Text("${counter}"),
+        Text("your word "),
+        Text("${firstName}"),
+        Text("${phone}"),
+        TextButton(
+            child: Text('back'),
+            onPressed: () {
+              Navigator.pop(context);
+            })
+      ]),
+    );
+  }
+}

@@ -1,0 +1,108 @@
+void main() {
+  runApp(MyApp());
+}
+class Product {
+  String name = "";
+    String image_url = "";
+    int quantity = 0;
+    double price = 0.0;
+    bool avaliable = false;
+}
+
+
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() {
+    return _MyHomePageState();
+  }
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyHomePage(),
+    );
+  }
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  void changeProduct(Product product) {
+    setState(() {
+      currentProduct.image_url = product.image_url;
+      currentProduct.name = product.name;
+    });
+  }
+
+  Product product1 = Product();
+  Product product2 = Product();
+  Product product3 = Product();
+  Product product4 = Product();
+  Product currentProduct = Product();
+  @override
+  Widget build(BuildContext context) {
+    product1.image_url = "images/img1.png";
+        product1.name = "prpduct1";
+        product1.avaliable = false;
+        product1.price = 6000.0;
+        product1.quantity = 20;
+        product2.name = "prpduct2";
+        product2.image_url = "images/img2.png";
+        product3.name = "prpduct3";
+        product3.image_url = "images/img3.png";
+        product4.name = "prpduct4";
+        product4.image_url = "images/img7.jpg";
+        currentProduct.image_url = product1.image_url;
+        currentProduct.name = product1.name;
+        currentProduct.quantity = product1.quantity;
+        currentProduct.price = product1.price;
+        currentProduct.avaliable = product1.avaliable;
+    return Scaffold(
+      body: ListView(children: [
+        Container(
+          child: Column(children: [
+            Image(image: AssetImage("${currentProduct.image_url}")),
+            Text("${currentProduct.name}")
+          ]),
+          width: 200,
+          height: 200,
+        ),
+        ListView(children: [
+          Column(children: [
+            Image(image: AssetImage("${product1.image_url}")),
+            TextButton(
+                child: Text("${product1.name}"),
+                onPressed: () {
+                  changeProduct(product1);
+                })
+          ]),
+          Column(children: [
+            Image(image: AssetImage("${product2.image_url}")),
+            TextButton(
+                child: Text("${product2.name}"),
+                onPressed: () {
+                  changeProduct(product2);
+                })
+          ]),
+          Column(children: [
+            Image(image: AssetImage("${product3.image_url}")),
+            TextButton(
+                child: Text("${product3.name}"),
+                onPressed: () {
+                  changeProduct(product3);
+                })
+          ]),
+          Column(children: [
+            Image(image: AssetImage("${product4.image_url}")),
+            TextButton(
+                child: Text("${product4.name}"),
+                onPressed: () {
+                  changeProduct(product4);
+                })
+          ])
+        ])
+      ]),
+    );
+  }
+}
+

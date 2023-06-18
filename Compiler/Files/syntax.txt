@@ -1,0 +1,25 @@
+bool b;
+class CC{
+    int y;
+    bool b;
+}
+
+void main(){
+CC pr = CC();
+pr.y = 0;
+pr.b = false;
+List v = [pr];
+}
+
+    Product p = Product();
+    p.src=1;
+    p.name="product1";
+    p.price=100;
+    p.quantity=5;
+
+    Product p1 = Product();
+
+    p1.name="product2";
+    p1.price=100;
+    p1.quantity=5;
+    List products = [p, p1];
